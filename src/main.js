@@ -14,6 +14,7 @@ export const fSearch = async (e) => {
     console.log('USER NAO ENCONTRADO');
     return;
   }
+  const allRepos = await fFetchRepos(inputValue);
   fMakeMainProfileEl(avatar_url, bio, created_at, followers, following, login, name, allRepos);
 }
 
