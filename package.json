@@ -1,0 +1,25 @@
+{
+  "name": "search-github",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luandersonalvesdev/search-github.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luandersonalvesdev/search-github/issues"
+  },
+  "homepage": "https://github.com/luandersonalvesdev/search-github#readme",
+  "dependencies": {
+    "eslint-config-trybe-frontend": "^1.7.0",
+    "vite": "^4.1.1"
+  }
+}
