@@ -1,4 +1,5 @@
-import { fetchProfile, fetchRepos } from "./fetchFunctions";
+import { fFetchProfile, fFetchRepos } from "./fetchFunctions";
+import { fMakeMainProfileEl } from "./createEl";
 
 
 export const fSearch = async (e) => {
@@ -7,12 +8,13 @@ export const fSearch = async (e) => {
   const {
     avatar_url, bio, created_at,
     followers, following, login, name
-  } = await fetchProfile(inputValue);
+  } = await fFetchProfile(inputValue);
   
   if(!login) {
     console.log('USER NAO ENCONTRADO');
     return;
   }
+  fMakeMainProfileEl(avatar_url, bio, created_at, followers, following, login, name, allRepos);
 }
 
 document.querySelector('.search').addEventListener('click', fSearch);
