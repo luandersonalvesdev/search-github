@@ -8,9 +8,7 @@ export const fFetchRepos = (userObj) => {
 
 export const fFetchProfile = (userName) => {
   const URL_PROFILE = `https://api.github.com/users/${userName}`;
-  return fetch(URL_PROFILE)
-    .then((response) => response.json())
-    .then((data) => data)
-    .catch((e) => e);
+  const ret = [(fetch(URL_PROFILE).then((response) => response.json()).then((data) => data)), fFetchRepos(userName)];
+  return ret;
 }
 
