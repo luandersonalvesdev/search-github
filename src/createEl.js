@@ -72,7 +72,8 @@ const fMakeObj = (...rest) => {
 
 export const fMakeMainProfileEl = (...rest) => {
   const [avatar_url, bio, created_at, followers, following, login, name, allRepos] = rest;
-  const allInfos = fMakeObj(avatar_url, bio, created_at, followers, following, login, name);
+  const convertCreatedAt = Array.from((created_at.slice(0, 10)).split('-')).reverse().join('/');
+  const allInfos = fMakeObj(avatar_url, bio, convertCreatedAt, followers, following, login, name);
   gContainerProfileEl.innerHTML = '';
   allInfos.forEach((info) => {
     fMakeEl(info.toUse, info.tag, info.classToAdd);

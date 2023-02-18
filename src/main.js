@@ -18,18 +18,19 @@ const fSearch = async (e) => {
   } = await fFetchProfile(inputValue);
   
   if(!login) {
-    console.log('USER NAO ENCONTRADO');
+    const gContainerProf = document.querySelector('.container-profile');
+    gContainerProf.innerHTML = 'Usuário não encontrado';
+    fEnabledDisabledFavBtn();
     return;
   }
   const allRepos = await fFetchRepos(inputValue);
   fMakeMainProfileEl(avatar_url, bio, created_at, followers, following, login, name, allRepos);
-  fEnabledDisabled();
+  fEnabledDisabledFavBtn();
 }
 
-const fEnabledDisabled = () => {
+const fEnabledDisabledFavBtn = () => {
   const gName = document.querySelector('.container-profile .login');
-  // console.log(gName);
-  if (gName === null) {
+  if (!gName) {
     gBtnFavorite.setAttribute('disabled', '');
   } else {
     gBtnFavorite.removeAttribute('disabled');
@@ -40,20 +41,5 @@ document.querySelector('.search').addEventListener('click', fSearch);
 gBtnFavorite.addEventListener('click', fFavorite);
 
 window.onload = () => {
-  fEnabledDisabled();
+  fEnabledDisabledFavBtn();
 }
-// avatar_url - foto 
-// bio - estudante de de... 
-// created_at - data de criacao 
-// followers - seguidores 
-// following - seguindo 
-// login - o @ 
-// name - o nome 
-
-// em repos.... 
-// um array de objetos dos repositorios públicos 
-// O OBJETO TEM: 
-// created_at - data de criacao 
-// homepage - onde o site ta hospedado 
-// name - nome do projeto 
-//
