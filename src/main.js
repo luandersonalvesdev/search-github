@@ -7,9 +7,6 @@ const gBtnFavorite = document.querySelector('.favorite');
 
 const fFavorite = () => {
   const gNameValue = document.querySelector('.container-profile .login').innerText;
-  // if (!fSaveLocalStorage(gNameValue)) {
-  //   return;
-  // }
   fSaveLocalStorage(gNameValue);
   fGetAndShowFavorites();
 }

@@ -10,6 +10,7 @@ export const fSaveLocalStorage = (name) => {
   const allFavs = fGetFromLocalStorage();
   if (allFavs.includes(name)) {
     alert('Usuário já está nos favoritos.');
+    return;
   } else {
     alert('Usuário adicionado');
   }
@@ -36,3 +37,12 @@ export const fGetAndShowFavorites = () => {
   gContainerFavEl.innerText = 'Nenhum favorito salvo';
   return;
 }
+
+export const fDeleteFavLocalStorage = (userName) => {
+  const allFavs = fGetFromLocalStorage();
+  const findUserName = allFavs.indexOf(userName);
+  allFavs.splice(findUserName, 1);
+  const newFav = [...allFavs];
+  localStorage.setItem('fav-profiles', JSON.stringify(newFav));
+  fGetAndShowFavorites();
+};

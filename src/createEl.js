@@ -1,6 +1,8 @@
 const gContainerProfileEl = document.querySelector('.container-profile');
 const gContainerFavProfileEl = document.querySelector('.container-favorite');
 
+import { fDeleteFavLocalStorage } from "./favoriteLocalStorage";
+
 const fMakeContainerRepos = (repos) => {
   const sortRepos = repos.sort((repoA, repoB) => {
     if (repoA.created_at > repoB.created_at) {
@@ -125,5 +127,12 @@ export const fMakeFavsProfileEl = (...rest) => {
   cSectionRepos.classList.add(`container-repos-fav-${login}`);
   gContainerFavProfileEl.appendChild(cSectionRepos);
   fMakeContainerReposFav(allRepos, login);
+  const cButtonDelete = document.createElement('button');
+  cButtonDelete.innerText = 'Deletar';
+  cSectionRepos.appendChild(cButtonDelete);
+
+  cButtonDelete.addEventListener('click', (e) => {
+    fDeleteFavLocalStorage(login);
+  });
 }
 // img, h4, p, p, p, h3, h2, 
