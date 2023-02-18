@@ -1,8 +1,15 @@
 import { fFetchProfile, fFetchRepos } from "./fetchFunctions";
 import { fMakeMainProfileEl } from "./createEl";
+import { fSaveLocalStorage } from "./favoriteLocalStorage";
 
+const gBtnFavorite = document.querySelector('.favorite');
 
-export const fSearch = async (e) => {
+const fFavorite = () => {
+  const gNameValue = document.querySelector('.container-profile .login').innerText;
+  fSaveLocalStorage(gNameValue);
+}
+
+const fSearch = async (e) => {
   e.preventDefault();
   const inputValue = document.querySelector('#inputName').value;
   const {
@@ -16,11 +23,25 @@ export const fSearch = async (e) => {
   }
   const allRepos = await fFetchRepos(inputValue);
   fMakeMainProfileEl(avatar_url, bio, created_at, followers, following, login, name, allRepos);
+  fEnabledDisabled();
+}
+
+const fEnabledDisabled = () => {
+  const gName = document.querySelector('.container-profile .login');
+  // console.log(gName);
+  if (gName === null) {
+    gBtnFavorite.setAttribute('disabled', '');
+  } else {
+    gBtnFavorite.removeAttribute('disabled');
+  }
 }
 
 document.querySelector('.search').addEventListener('click', fSearch);
+gBtnFavorite.addEventListener('click', fFavorite);
 
-
+window.onload = () => {
+  fEnabledDisabled();
+}
 // avatar_url - foto 
 // bio - estudante de de... 
 // created_at - data de criacao 

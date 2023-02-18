@@ -20,7 +20,6 @@ const fMakeContainerRepos = (repos) => {
     cNameEl.target = '_blank';
     gContainerRepos.appendChild(cNameEl);
   });
-  console.log(sortRepos);
 }
 
 const fMakeEl = (toUse, tag, classToAdd) => {

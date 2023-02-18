@@ -1,4 +1,3 @@
-
 export const fFetchRepos = (userObj) => {
   const URL_REPOS = `https://api.github.com/users/${userObj}/repos`;
   return fetch(URL_REPOS)
